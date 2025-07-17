@@ -7,6 +7,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gitsigns.nvim": { "branch": "main", "commit": "bbee149e00c404aa9f7a7c248b981cde953b252a" },
+  "gruvbox.nvim": { "branch": "main", "commit": "094fe944033d15013829e94e0c4def4cb7bb355a" },
   "harpoon": { "branch": "master", "commit": "1bc17e3e42ea3c46b33c0bbad6a880792692a1b3" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lualine.nvim": { "branch": "master", "commit": "a94fc68960665e54408fe37dcf573193c4ce82c9" },
@@ -35,7 +36,6 @@
   "springboot-nvim": { "branch": "main", "commit": "dab73716e941778bb88fe425000fe091283e26ae" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
-  "vim": { "branch": "main", "commit": "17c501c1f69d736f21959a66702cd6590f415a97" },
   "vim-fugitive": { "branch": "master", "commit": "d3e2b58dec75fc6012fecc82ce0d33a45ed0560e" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
