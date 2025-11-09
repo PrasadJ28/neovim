@@ -26,6 +26,7 @@ return {
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
             vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
             vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+            vim.keymap.set("n", "<leader>ot", "<cmd>Telescope overseer<cr>", { desc = "Overseer Tasks" })
           end
     },
     {
