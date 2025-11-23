@@ -156,6 +156,12 @@ return {
       "wurli/cobalt.nvim",
       "Everblush/nvim",
       "rktjmp/lush.nvim",
+      "kuri-sun/yoda.nvim",
+      "eldritch-theme/eldritch.nvim",
+      "savq/melange-nvim",
+      'rockerBOO/boo-colorscheme-nvim',
+      "yorumicolors/yorumi.nvim",
+      'JoosepAlviste/palenightfall.nvim',
       "default",
     })
   end,
