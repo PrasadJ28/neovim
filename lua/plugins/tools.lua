@@ -121,15 +121,26 @@ return {
   -- Nvim Tree (File Explorer)
   ------------------------------------------------------------------
   {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle Explorer" })
+  "nvim-tree/nvim-tree.lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle Explorer" })
 
-      require("nvim-tree").setup({
-        hijack_netrw = true,
-        auto_reload_on_write = true,
-      })
-    end,
-  },
+    require("nvim-tree").setup({
+      hijack_netrw = true,
+      auto_reload_on_write = true,
+      -- ADD THIS SECTION
+      filters = {
+        dotfiles = false,    -- False means "do not filter" (Show files like .env)
+        git_ignored = false,  -- Disable git filtering (so .env shows up)
+        custom = {            -- MANUALLY hide the specific junk you don't want
+          "^.git$",
+          "node_modules",
+          "minio_data",
+          "postgres_data"
+        },
+      },
+    })
+  end,
+},
 }

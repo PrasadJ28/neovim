@@ -1,15 +1,31 @@
 return {
   ---------------------------------------------------------------------------
   -- Colorscheme
-  ---------------------------------------------------------------------------
-  {
-    "kvrohit/rasmus.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("rasmus")
-    end,
-  },
+  -- ---------------------------------------------------------------------------
+  -- {
+  --   "kvrohit/rasmus.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme("rasmus")
+  --   end,
+  -- },
+-- {
+--   "kronos.nvim",
+--   dir = "~/Files/projects/kronos.nvim",
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     -- 1. Configure the theme BEFORE loading it
+--     require("kronos").setup({
+--       theme = "dark", -- Change this to "light" or "cyberpunk"
+--       transparent = false,
+--     })
+--
+--     -- 2. Load the colorscheme
+--     vim.cmd.colorscheme("kronos")
+--   end,
+-- },
 
   ---------------------------------------------------------------------------
   -- Lualine (statusline)
@@ -59,6 +75,7 @@ return {
     end,
   },
 
+  { "nvim-tree/nvim-web-devicons", opts = {} },
   ---------------------------------------------------------------------------
   -- Which-Key for keybinding popup
   ---------------------------------------------------------------------------
@@ -66,7 +83,23 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     config = function()
-      require("which-key").setup()
+      require("which-key").setup({
+      win = {
+        -- Border style: "none", "single", "double", "rounded", "solid", or "shadow"
+        border = "rounded",
+        padding = { 2, 2 }, -- [top/bottom, right/left]
+        title = true,       -- Show a title for the window?
+        title_pos = "center",
+        zindex = 1000,
+        -- Simple opacity/transparency (0-100)
+        wo = { winblend = 10 }
+      },
+      layout = {
+        width = { min = 20, max = 50 }, -- min and max width of the columns
+        spacing = 3,                    -- spacing between columns
+        align = "left",                 -- align columns left, center or right
+      },
+    })
     end,
   },
 
@@ -89,6 +122,7 @@ return {
     lazy = true,
     config = function()
       require("notify").setup({
+        background_colour = "#000000",
         stages = "fade",
         timeout = 1500,
       })
@@ -119,9 +153,9 @@ return {
     end
   },
 
-  ------------------------------------------------------------------
--- Theme switcher (Themify)
-------------------------------------------------------------------
+  ----------------------------------------------------------------
+  -- Theme switcher (Themify)
+  ----------------------------------------------------------------
 {
   "lmantw/themify.nvim",
   lazy = false,
@@ -136,7 +170,7 @@ return {
       "shaunsingh/nord.nvim",
       "motaz-shokry/gruvbox.nvim",
       "ntk148v/slack.nvim",
-      "dark-orchid/neovim",
+      --"dark-orchid/neovim",
       "tiesen243/vercel.nvim",
       "kevinm6/kurayami.nvim",
       "b0o/lavi.nvim",
@@ -159,9 +193,17 @@ return {
       "kuri-sun/yoda.nvim",
       "eldritch-theme/eldritch.nvim",
       "savq/melange-nvim",
-      'rockerBOO/boo-colorscheme-nvim',
+      --'rockerBOO/boo-colorscheme-nvim',
       "yorumicolors/yorumi.nvim",
       'JoosepAlviste/palenightfall.nvim',
+      "ficcdaf/ashen.nvim",
+      'kepano/flexoki-neovim',
+       "Shatur/neovim-ayu",
+      "everviolet/nvim",
+      'projekt0n/github-nvim-theme',
+       "talha-akram/noctis.nvim",
+       'Yazeed1s/oh-lucy.nvim',
+       "PrasadJ28/kronos.nvim",
       "default",
     })
   end,
@@ -169,6 +211,16 @@ return {
 --Lush for soem themes
 {
   "rktjmp/lush.nvim",
+},
+{
+  'nvimdev/dashboard-nvim',
+  event = 'VimEnter',
+  config = function()
+    require('dashboard').setup {
+      -- config
+    }
+  end,
+  dependencies = { {'nvim-tree/nvim-web-devicons'}}
 }
 
 }

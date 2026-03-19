@@ -28,6 +28,12 @@ return {
     "rcarriga/nvim-notify",
     lazy = false,
     config = function()
+      -- FIXED: Added setup with background_colour to prevent transparency errors
+      require("notify").setup({
+        background_colour = "#000000",
+        stages = "fade",
+        timeout = 1500,
+      })
       vim.notify = require("notify")
     end,
   },
@@ -35,7 +41,7 @@ return {
   ---------------------------------------------------------
   -- 3. Neo-tree (Modern File Explorer)
   ---------------------------------------------------------
-  {
+{
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
@@ -47,7 +53,7 @@ return {
     keys = {
       { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
     },
-    opts = {
+   opts = {
       filesystem = {
         follow_current_file = true,
         hijack_netrw_behavior = "open_default",
@@ -128,13 +134,20 @@ return {
   -- 10. Project Manager (Auto detect project roots)
   ---------------------------------------------------------
   {
-    "ahmedkhalf/project.nvim",
+    "DrKJeff16/project.nvim",
+    lazy = false,
     config = function()
-    require("project_nvim").setup({
-      detection_methods = { "lsp", "pattern" },
-      patterns = { ".git", "mvnw", "gradlew", "package.json" },
-    })
-  end,
+      -- FIXED: Wrapped in pcall to prevent crash on fresh install
+      local status_ok, project = pcall(require, "project_nvim")
+      if not status_ok then
+        return
+      end
+
+      project.setup({
+        detection_methods = { "lsp", "pattern" },
+        patterns = { ".git", "mvnw", "gradlew", "package.json" },
+      })
+    end,
   },
 
   ---------------------------------------------------------

@@ -14,7 +14,10 @@ return {
           "vim", "vimdoc", "lua",
           "java", "javascript", "typescript",
           "html", "css", "json", "tsx",
-          "markdown", "markdown_inline", "gitignore"
+          "markdown", "markdown_inline", "gitignore",
+          "elixir",
+          "heex",
+          "eex"
         },
 
         highlight = { enable = true },

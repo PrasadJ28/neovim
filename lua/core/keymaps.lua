@@ -33,4 +33,29 @@ vim.keymap.set("n", "<C-Down>", ":resize -2<CR>")
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
+-- Interactive Search and Replace using Noice UI
+vim.keymap.set("n", "<leader>r", function()
+  -- 1. Ask for the word to search
+  vim.ui.input({ prompt = "Search for: " }, function(query)
+    if not query or query == "" then return end -- Cancel if empty
 
+    -- 2. Ask for the replacement word
+    vim.ui.input({ prompt = "Replace with: " }, function(replace)
+      if replace == nil then return end -- Cancel if Esc pressed
+
+      -- 3. Execute the command (Global replace with confirmation)
+      -- The 'c' flag asks for confirmation for every match
+      vim.cmd("%s/" .. query .. "/" .. replace .. "/gc")
+    end)
+  end)
+end, { desc = "Search and Replace (UI)" })
+
+-- Handle the keys that Tmux is passing through
+-- Alt + \ to split vertically inside Neovim
+vim.keymap.set('n', '<M-\\>', ':vsplit<CR>', { silent = true })
+
+-- Alt + - to split horizontally inside Neovim
+vim.keymap.set('n', '<M-->', ':split<CR>', { silent = true })
+
+vim.api.nvim_set_keymap("n", "<space>ci", ":Telescope lsp_implementations<CR>", { noremap = true, silent = true, desc = "Go to Implementation" })
+vim.api.nvim_set_keymap("n", "<space>cr", ":Telescope lsp_references<CR>",      { noremap = true, silent = true, desc = "Go to References" })

@@ -27,6 +27,7 @@ return {
           "jdtls",
           "pyright",
           "rust_analyzer",
+          "elixirls"
         },
       })
     end,
