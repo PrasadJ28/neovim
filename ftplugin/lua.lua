@@ -5,7 +5,8 @@ vim.bo.shiftwidth = 2
 vim.bo.tabstop = 2
 vim.bo.softtabstop = 2
 vim.bo.expandtab = true
-
+-- Sync clipboard between OS and Neovim
+vim.opt.clipboard = "unnamedplus"
 -- Lua comment style
 vim.bo.commentstring = "-- %s"
 

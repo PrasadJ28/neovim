@@ -27,7 +27,8 @@ return {
           "jdtls",
           "pyright",
           "rust_analyzer",
-          "elixirls"
+          "elixirls",
+          "zls",
         },
       })
     end,
@@ -79,6 +80,32 @@ return {
             settings = {
               Lua = {
                 diagnostics = { globals = { "vim" } },
+              },
+            },
+          })
+        end,
+
+        ["zls"] = function()
+          lspconfig.zls.setup({
+            capabilities = capabilities,
+            on_attach = function(client, bufnr)
+              -- Execute your shared on_attach function
+              on_attach(client, bufnr)
+
+              -- Zig-specific auto-formatting on save
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                callback = function()
+                  vim.lsp.buf.format({ async = false, id = client.id })
+                end,
+              })
+            end,
+            settings = {
+              zls = {
+                enable_build_on_save = true,
+                build_on_save_step = "check",
+                enable_autofix = true,
+                warn_style = true,
               },
             },
           })
